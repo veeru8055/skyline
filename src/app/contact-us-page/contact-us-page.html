@@ -1,0 +1,73 @@
+<div class="contact-container">
+
+  <!-- HEADER -->
+  <div class="contact-header">
+    <h1>Contact Skyline Security Services</h1>
+    <p>
+      For corporate partnerships, multi-site contracts, hospitality protection,
+      construction security, or large-scale event command coordination,
+      contact our operations team directly.
+    </p>
+  </div>
+
+  <div class="contact-content">
+
+    <!-- LEFT INFO (unchanged) -->
+    <div class="contact-info">
+      <h3>Operations Across</h3>
+      <p>Maharashtra | Pune | Mumbai</p>
+
+      <div class="info-block">
+        <h4>Phone</h4>
+        <p>+91 XXXXX XXXXX</p>
+      </div>
+
+      <div class="info-block">
+        <h4>Email</h4>
+        <p>info@skylinesecurity.com</p>
+      </div>
+
+      <div class="info-block">
+        <h4>Office Address</h4>
+        <p>Skyline Security Services<br />Pune, Maharashtra, India</p>
+      </div>
+
+      <div class="info-block">
+        <h4>Website</h4>
+        <p>www.skylinesecurity.com</p>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-form">
+      <h3>Send an Inquiry</h3>
+
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+
+        <input type="text" formControlName="name" placeholder="Full Name" />
+        <small *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+          Name is required
+        </small>
+
+        <input type="email" formControlName="email" placeholder="Email Address" />
+
+        <input type="text" formControlName="phone" placeholder="Phone Number" />
+        <small *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid">
+          Phone number is required
+        </small>
+
+        <textarea formControlName="message" placeholder="Your Requirement"></textarea>
+
+        <button type="submit" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Sending...' : 'Submit Request' }}
+        </button>
+
+        <!-- Success / Error -->
+        <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      </form>
+    </div>
+
+  </div>
+</div>      

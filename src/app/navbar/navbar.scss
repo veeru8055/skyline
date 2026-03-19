@@ -1,0 +1,119 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: black;
+  color: white;
+  padding: 20px 40px;
+  position: relative;
+
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+
+    span {
+      display: block;
+      font-size: 12px;
+      color: #c9a96a;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        color: #c9a96a;
+      }
+    }
+  }
+
+  .cta a {
+    background: #c9a96a;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .mobile-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s;
+    }
+
+    &.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    &.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+
+    .hamburger {
+      display: flex;
+    }
+
+    .cta {
+      display: none; // ❗ removes duplicate button
+    }
+
+    .nav-links {
+      width: 100%;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+
+      &.open {
+        max-height: 300px;
+      }
+    }
+
+    .mobile-cta {
+      display: block;
+
+      a {
+        display: block;
+        background: #c9a96a;
+        color: black;
+        padding: 10px;
+        text-align: center;
+        border-radius: 4px;
+      }
+    }
+  }
+}

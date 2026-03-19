@@ -1,0 +1,40 @@
+<div class="container">
+  <!-- LEFT -->
+  <div class="left">
+    @for (item of data().leftSide; track item.leftTitle) {
+      <h3>• {{ item.leftTitle }}</h3>
+      <p>{{ item.leftDescription }}</p>
+    }
+  </div>
+
+  <!-- MIDDLE -->
+  <div class="middle">
+    @for (card of data().middleCards; track card.title) {
+      <div class="card">
+
+        <!-- Show image only if present -->
+        @if (card.image) {
+          <div class="circle">
+            <img [src]="card.image" alt="" />
+          </div>
+        }
+
+        <!-- Title -->
+        <span
+          class="card-title"
+          [class.no-image]="!card.image">
+          {{ card.title }}
+        </span>
+
+      </div>
+    }
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    @for (item of data().rightSide; track item.rightTitle) {
+      <h3>• {{ item.rightTitle }}</h3>
+      <p>{{ item.rightDescription }}</p>
+    }
+  </div>
+</div>
