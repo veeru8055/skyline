@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import emailjs from '@emailjs/browser';
@@ -15,8 +15,10 @@ export class ContactUsPageComponent implements OnInit {
     contactForm!: FormGroup;
 
     isSubmitting = false;
-    successMessage = '';
     errorMessage = '';
+    copiedField: 'phone' | 'office' | 'email' | 'address' | 'website' | null = null;
+    showSuccessPopup = false;
+    private popupTimer: ReturnType<typeof setTimeout> | null = null;
 
     constructor(private fb: FormBuilder) { }
 
@@ -27,6 +29,12 @@ export class ContactUsPageComponent implements OnInit {
             phone: ['', Validators.required],
             message: ['']
         });
+    }
+
+    ngOnDestroy(): void {
+        if (this.popupTimer) {
+            clearTimeout(this.popupTimer);
+        }
     }
 
     submitForm() {
@@ -49,17 +57,55 @@ export class ContactUsPageComponent implements OnInit {
             'Wv9zDZC171tZDoqKP'
         ).then(
             () => {
-                this.successMessage = 'Request submitted successfully!';
                 this.errorMessage = '';
                 this.contactForm.reset();
                 this.isSubmitting = false;
+                this.triggerSuccessPopup();
             },
             (error) => {
                 console.error(error);
                 this.errorMessage = 'Something went wrong. Please try again.';
-                this.successMessage = '';
                 this.isSubmitting = false;
             }
         );
+    }
+
+    async copyField(field: 'phone' | 'office' | 'email' | 'address' | 'website', value: string): Promise<void> {
+
+        try {
+            await navigator.clipboard.writeText(value);
+            this.showCopiedState(field);
+        } catch {
+            const textArea = document.createElement('textarea');
+            textArea.value = value;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            this.showCopiedState(field);
+        }
+    }
+
+    private showCopiedState(field: 'phone' | 'office' | 'email' | 'address' | 'website'): void {
+        this.copiedField = field;
+        setTimeout(() => {
+            if (this.copiedField === field) {
+                this.copiedField = null;
+            }
+        }, 1800);
+    }
+
+    private triggerSuccessPopup(): void {
+        this.showSuccessPopup = true;
+        if (this.popupTimer) {
+            clearTimeout(this.popupTimer);
+        }
+        this.popupTimer = setTimeout(() => {
+            this.showSuccessPopup = false;
+            this.popupTimer = null;
+        }, 3400);
     }
 }

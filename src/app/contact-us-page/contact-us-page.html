@@ -18,11 +18,43 @@
       <p>Maharashtra | Pune | Mumbai</p>
 
       <div class="info-block">
+        <button
+          type="button"
+          class="info-copy-btn"
+          (click)="copyField('phone', '+91 9604129662, +91 9930482233')"
+          [attr.aria-label]="copiedField === 'phone' ? 'Copied' : 'Copy phone numbers'"
+          [title]="copiedField === 'phone' ? 'Copied' : 'Copy'"
+        >
+          <i class="bi bi-copy" aria-hidden="true"></i>
+        </button>
         <h4>Phone</h4>
         <p>+91 9604129662<br>+91 9930482233</p>
       </div>
 
       <div class="info-block">
+        <button
+          type="button"
+          class="info-copy-btn"
+          (click)="copyField('office', '+91 6006905967')"
+          [attr.aria-label]="copiedField === 'office' ? 'Copied' : 'Copy office number'"
+          [title]="copiedField === 'office' ? 'Copied' : 'Copy'"
+        >
+          <i class="bi bi-copy" aria-hidden="true"></i>
+        </button>
+        <h4>Office Number</h4>
+        <p><a href="tel:+916006905967">+91 6006905967</a></p>
+      </div>
+
+      <div class="info-block">
+        <button
+          type="button"
+          class="info-copy-btn"
+          (click)="copyField('email', 'arbaaz.rajani@skylinesecurityservice.com, zahid.qureshi@skylinesecurityservice.com')"
+          [attr.aria-label]="copiedField === 'email' ? 'Copied' : 'Copy email addresses'"
+          [title]="copiedField === 'email' ? 'Copied' : 'Copy'"
+        >
+          <i class="bi bi-copy" aria-hidden="true"></i>
+        </button>
         <h4>Email</h4>
         <p>
           <a href="mailto:arbaaz.rajani@skylinesecurityservice.com">arbaaz.rajani@skylinesecurityservice.com</a><br>
@@ -31,6 +63,15 @@
       </div>
 
       <div class="info-block">
+        <button
+          type="button"
+          class="info-copy-btn"
+          (click)="copyField('address', 'Pune: Shop No 1 Panama Park, Dhanori Lohegaon, Pune 411047 | Mumbai: SHOP NO 6/B, P-10, BIRIS COMPOUND RAM MANDIR ROAD GOREGAON WEST, MUMBAI SUBURBAN, MAHARASHTRA-400104')"
+          [attr.aria-label]="copiedField === 'address' ? 'Copied' : 'Copy office addresses'"
+          [title]="copiedField === 'address' ? 'Copied' : 'Copy'"
+        >
+          <i class="bi bi-copy" aria-hidden="true"></i>
+        </button>
         <h4>Office Addresses</h4>
         <p><strong>Pune:</strong> Shop No 1 Panama Park, Dhanori Lohegaon, Pune 411047<br>
           <strong>Mumbai:</strong> SHOP NO 6/B, P-10, BIRIS COMPOUND RAM MANDIR ROAD GOREGAON WEST, MUMBAI SUBURBAN,
@@ -39,6 +80,15 @@
       </div>
 
       <div class="info-block">
+        <button
+          type="button"
+          class="info-copy-btn"
+          (click)="copyField('website', 'www.skylinesecurityservice.com')"
+          [attr.aria-label]="copiedField === 'website' ? 'Copied' : 'Copy website'"
+          [title]="copiedField === 'website' ? 'Copied' : 'Copy'"
+        >
+          <i class="bi bi-copy" aria-hidden="true"></i>
+        </button>
         <h4>Website</h4>
         <p>www.skylinesecurityservice.com</p>
       </div>
@@ -50,15 +100,25 @@
 
       <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
 
-        <input type="text" formControlName="name" placeholder="Full Name" />
-        <small *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Full Name"
+          [class.invalid-field]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+        />
+        <small class="field-error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
           Name is required
         </small>
 
         <input type="email" formControlName="email" placeholder="Email Address" />
 
-        <input type="text" formControlName="phone" placeholder="Phone Number" />
-        <small *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid">
+        <input
+          type="text"
+          formControlName="phone"
+          placeholder="Phone Number"
+          [class.invalid-field]="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid"
+        />
+        <small class="field-error" *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid">
           Phone number is required
         </small>
 
@@ -68,12 +128,16 @@
           {{ isSubmitting ? 'Sending...' : 'Submit Request' }}
         </button>
 
-        <!-- Success / Error -->
-        <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+        <!-- Error -->
         <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
       </form>
     </div>
 
+  </div>
+
+  <div class="success-popup" *ngIf="showSuccessPopup" role="status" aria-live="polite">
+    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+    <span>Your request has been sent. A member of our team will contact you shortly.</span>
   </div>
 </div>
