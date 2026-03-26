@@ -4,3 +4,9 @@ html, body {
   padding: 0;
   overflow-x: hidden; // 👈 important
 }
+
+body {
+  background: linear-gradient(120deg, #d4b25a 0%, #3c2b19 40%, #040409 100%);
+  margin: 0;
+  padding-top: 90px;
+}

@@ -15,39 +15,60 @@ export class DetailsPageComponent {
         {
             leftSide: [
                 {
+                    id: 'services',
                     leftTitle: 'Our Services',
                     leftDescription:
-                        'We provide a comprehensive range of security solutions tailored to meet the unique needs of each client. From on-site personnel to advanced surveillance systems, our services are designed to ensure safety, reliability, and peace of mind at all times.'
+                        'At Skyline Security Services, protection is not a service — it is a responsibility we own. We stand for discipline, vigilance, and uncompromising integrity. Every assignment we take on is treated as mission-critical.'
                 },
                 {
-                    leftTitle: 'Custom Solutions',
+                    id: 'capacity',
+                    leftTitle: 'Organizational Capacity',
                     leftDescription:
-                        'Every business is different, and so are its security needs. Our experts work closely with clients to design and implement customized strategies that address specific risks while remaining flexible and scalable over time.'
-                },
-                {
-                    leftTitle: 'sample',
-                    leftDescription: 'desc'
+                        '• 100 Licensed Security Guards\n• 200 Event & Crowd Control Professionals\n• 100 Housekeeping & Facility Personnel\nThis structured manpower base enables immediate mobilization across single or multi-site operations.'
                 }
             ],
 
             middleCards: [
                 {
-                    title: 'Man Guarding & Extended Coverage',
-                    image: 'assets/images/guards.jpeg'
+                    id: 'corporate',
+                    title: 'Corporate & Commercial Security',
+                    image: 'assets/images/guards.jpeg',
+                    imageAlt: 'Security guards in uniform'
                 },
                 {
-                    title: 'Electronic Surveillance Systems',
+                    id: 'hospitality',
+                    title: 'Hospitality & Executive Environments'
                 },
                 {
-                    title: 'Risk Assessment & Consulting'
+                    id: 'construction',
+                    title: 'Construction, Industrial & Warehouse Security'
+                },
+                {
+                    id: 'residential',
+                    title: 'Residential Security'
+                },
+                {
+                    id: 'event',
+                    title: 'Event & Crowd Control'
+                },
+                {
+                    id: 'housekeeping',
+                    title: 'Housekeeping & Facility Management'
                 }
             ],
 
             rightSide: [
                 {
+                    id: 'commitment',
                     rightTitle: 'Our Commitment',
                     rightDescription:
-                        'Our team is committed to maintaining the highest standards of professionalism and vigilance. Every member is trained extensively to handle real-world scenarios with confidence, ensuring that your safety is never compromised.'
+                        'Our security professionals are trained to anticipate, not react. To deter, not escalate. To protect, not perform. We operate with clarity of purpose, strength of character, and total ownership of every post we command.'
+                },
+                {
+                    id: 'why',
+                    rightTitle: 'Why Skyline?',
+                    rightDescription:
+                        'Our objective is simple: Create secure, controlled, professionally managed environments that reinforce client credibility while minimizing exposure to operational risk. We are built for institutional clients, not short-term assignments.'
                 }
             ]
         },

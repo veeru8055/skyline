@@ -38,15 +38,15 @@ export class ContactUsPageComponent implements OnInit {
         this.isSubmitting = true;
 
         emailjs.send(
-            'service_2xp4yzs',
-            'template_ip073ea',
+            'service_wh7l151',
+            'template_87ya4qq',
             {
                 name: this.contactForm.value.name || 'no-name-given',
                 email: this.contactForm.value.email || 'no-email-given',
                 phone: this.contactForm.value.phone || 'no-phone-given',
                 message: this.contactForm.value.message || 'no-message-given'
             },
-            'RlomUTb_Pzmegi-o8'
+            'Wv9zDZC171tZDoqKP'
         ).then(
             () => {
                 this.successMessage = 'Request submitted successfully!';

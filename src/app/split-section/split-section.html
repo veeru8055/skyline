@@ -1,7 +1,7 @@
 <div class="container">
   <!-- LEFT -->
   <div class="left">
-    @for (item of data().leftSide; track item.leftTitle) {
+    @for (item of data().leftSide; track item.id) {
       <h3>• {{ item.leftTitle }}</h3>
       <p>{{ item.leftDescription }}</p>
     }
@@ -9,13 +9,13 @@
 
   <!-- MIDDLE -->
   <div class="middle">
-    @for (card of data().middleCards; track card.title) {
+    @for (card of data().middleCards; track card.id) {
       <div class="card">
 
         <!-- Show image only if present -->
         @if (card.image) {
           <div class="circle">
-            <img [src]="card.image" alt="" />
+            <img [src]="card.image" [alt]="card.imageAlt || card.title" />
           </div>
         }
 
@@ -32,7 +32,7 @@
 
   <!-- RIGHT -->
   <div class="right">
-    @for (item of data().rightSide; track item.rightTitle) {
+    @for (item of data().rightSide; track item.id) {
       <h3>• {{ item.rightTitle }}</h3>
       <p>{{ item.rightDescription }}</p>
     }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, input, QueryList, ViewChildren } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { SplitSectionData } from '../models/split-section.model';
 
 @Component({
