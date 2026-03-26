@@ -1,21 +1,18 @@
+export interface ContentBlock {
+    type: 'paragraph' | 'bulletList' | 'highlight' | 'keystat';
+    content: string | string[];
+}
+
+export interface SkylineSection {
+    id: string;
+    title: string;
+    subtitle?: string;
+    content: ContentBlock[];
+    backgroundColor?: 'primary' | 'dark' | 'light' | 'accent';
+    icon?: string;
+    layout?: 'standard' | 'compact' | 'feature';
+}
+
 export interface SplitSectionData {
-    leftSide: {
-        id: string;
-        leftTitle: string;
-        leftDescription: string;
-    }[]
-
-    middleCards: {
-        id: string;
-        title: string;
-        image?: string;
-        imageAlt?: string;
-    }[];
-
-    rightSide: {
-        id: string;
-        rightTitle: string;
-        rightDescription: string;
-    }[]
-
+    sections: SkylineSection[];
 }
