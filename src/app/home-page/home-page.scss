@@ -75,23 +75,6 @@
     letter-spacing: 0.08em;
 }
 
-.cta-btn {
-    color: #000;
-    background: #fada6c;
-    border-radius: 100px;
-    padding: 12px 26px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
-    cursor: pointer;
-}
-
-.cta-btn:hover {
-    background: #f1d58c;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-}
-
 @media (max-width: 768px) {
     .hero-content h2 {
         font-size: clamp(1.8rem, 8vw, 2.8rem);
