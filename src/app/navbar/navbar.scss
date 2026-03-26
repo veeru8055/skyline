@@ -114,19 +114,37 @@
 
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  position: relative;
   cursor: pointer;
+  width: 28px;
+  height: 22px;
+  overflow: visible;
 
   span {
-    width: 25px;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    width: 24px;
     height: 3px;
     background: white;
     transition: 0.3s;
+    transform-origin: center;
+  }
+
+  span:nth-child(1) {
+    transform: translateY(-8px);
+  }
+
+  span:nth-child(2) {
+    transform: translateY(0);
+  }
+
+  span:nth-child(3) {
+    transform: translateY(8px);
   }
 
   &.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(0) rotate(45deg);
   }
 
   &.open span:nth-child(2) {
@@ -134,7 +152,7 @@
   }
 
   &.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: translateY(0) rotate(-45deg);
   }
 }
 
@@ -154,14 +172,21 @@
       width: 100%;
       flex-direction: column;
       gap: 15px;
-      margin-top: 15px;
+      margin-top: 0;
+      padding: 0;
 
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
 
+      .active-pill {
+        display: none;
+      }
+
       &.open {
         max-height: 300px;
+        margin-top: 15px;
+        padding: 6px;
       }
     }
 

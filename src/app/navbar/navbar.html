@@ -17,9 +17,9 @@
   <!-- Links -->
   <ul class="nav-links" [class.open]="isMenuOpen">
     <span class="active-pill" [ngStyle]="pillStyles"></span>
-    <li><a #navLink routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Home</a></li>
-    <li><a #navLink routerLink="/services" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Services</a></li>
-    <li><a #navLink routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Contact</a></li>
+    <li><a #navLink data-route="/" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Home</a></li>
+    <li><a #navLink data-route="/services" routerLink="/services" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Services</a></li>
+    <li><a #navLink data-route="/contact" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu(); onNavSelect($event)">Contact</a></li>
 
     <!-- Mobile CTA -->
     <li class="mobile-cta">

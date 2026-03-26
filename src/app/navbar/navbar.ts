@@ -49,8 +49,8 @@ export class NavbarComponent implements AfterViewInit {
         const currentUrl = this.router.url.split('?')[0];
         const linkToActivate = this.navLinks.find((el) => {
             const anchor = el.nativeElement as HTMLAnchorElement;
-            const href = anchor.getAttribute('routerlink') || '';
-            return href === currentUrl;
+            const route = anchor.getAttribute('data-route') || '';
+            return route === currentUrl;
         });
 
         if (linkToActivate) {
