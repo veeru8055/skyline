@@ -6,6 +6,16 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/assets/images/background-image.png') center center / min(42vw, 420px) no-repeat;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }
 }
 
 .hero-wrap .overlay {
@@ -16,6 +26,7 @@
     bottom: 0;
     background: radial-gradient(circle at 30% 30%, rgba(255, 231, 170, 0.25), rgba(0, 0, 0, 0.6) 55%);
     z-index: 1;
+    pointer-events: none;
 }
 
 .hero-content {
@@ -76,6 +87,11 @@
 }
 
 @media (max-width: 768px) {
+    .hero-wrap::before {
+        background-size: min(70vw, 320px);
+        opacity: 0.1;
+    }
+
     .hero-content h2 {
         font-size: clamp(1.8rem, 8vw, 2.8rem);
     }
